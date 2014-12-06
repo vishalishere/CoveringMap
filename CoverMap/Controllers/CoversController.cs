@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using CoverMap.Models;
+using CoverMap.dtos;
 
 namespace CoverMap.Controllers
 {
@@ -89,6 +90,22 @@ namespace CoverMap.Controllers
                     c.Technology = "Tale";
                 }
             }
+            return covers;
+        }
+
+        [HttpPost]
+        public IQueryable<CoverInfoDTO> GetCoverageInformationWithinBounds([FromBody] CoversBound pos)
+        {
+            var covers = from c in db.Covers
+                         where (c.Lattitude > pos.P1Lat && c.Lattitude < pos.P2Lat) &&
+                               (c.Longitude > pos.P1Lng && c.Longitude < pos.P2Lng)
+                         group c by new { c.NetworkName, c.Technology } into avgCoverage
+                         select new CoverInfoDTO
+                         {
+                             NetworkName = avgCoverage.Key.NetworkName,
+                             Technology = (avgCoverage.Key.Technology == "" ? "Tale" : avgCoverage.Key.Technology),
+                             SignalStrength = (int)avgCoverage.Average(x => x.SignalStrength)
+                         };
             return covers;
         }
 

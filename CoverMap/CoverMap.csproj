@@ -175,6 +175,7 @@
     <Compile Include="Controllers\CoversController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="dtos\CoverInfoDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -194,7 +195,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cover.cs" />
     <Compile Include="Models\CoverContext.cs" />
-    <Compile Include="Models\CoversBound.cs" />
+    <Compile Include="dtos\CoversBound.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

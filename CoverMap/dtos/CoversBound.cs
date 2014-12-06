@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace CoverMap.Models
+namespace CoverMap.dtos
 {
     public class CoversBound
     {

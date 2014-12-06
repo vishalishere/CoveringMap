@@ -18,6 +18,12 @@ namespace CoverMap
             );
 
             config.Routes.MapHttpRoute(
+                name: "GetCoverageInformationWithinBounds",
+                routeTemplate: "GetCoverageInformationWithinBounds",
+                defaults: new { controller = "Covers", action = "GetCoverageInformationWithinBounds" }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "createCoverRoute",
                 routeTemplate: "api/createcover",
                 defaults: new { controller = "Covers", action = "PostCover" }

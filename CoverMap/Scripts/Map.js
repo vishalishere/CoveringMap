@@ -46,7 +46,7 @@ var signalToText = function (signal) {
         case 2: return "Lidt signal";
         case 3: return "Middel signal";
         case 4: return "Meget signal";
-        case 5: return "Godt signal";
+        case 5: return "Fuldt signal";
     }
 };
 
@@ -90,10 +90,8 @@ var calculateForNetworks = function (datapoints) {
 var showResult = function (res) {
     $('#dataresult li').remove();
     for (var i in res) {
-        for (var j in res[i]) {
-            var tmp = '<li>' + i + ': ' + j + ': '+res[i][j]+'</li>';
-            $('#dataresult').append(tmp);
-        }
+        var tmp = '<li>' + res[i].NetworkName + ': ' + res[i].Technology + ': ' + signalToText(res[i].SignalStrength) + '</li>';
+        $('#dataresult').append(tmp);
     }
     $('#popup').modal('show');
 };
@@ -108,12 +106,13 @@ var getDataPoint = function (lat, lng, dataId, data, marker) {
         P2Lng: lng+0.01
     }
     $.ajax({
-        url: "/GetDatapointsWithinBounds",
+        url: "/GetCoverageInformationWithinBounds",
         type: "POST",
         data: bounds
     }).done(function (resData) {
-        var res = calculateForNetworks(resData);
-        showResult(res);
+        console.log(resData);
+        //var res = calculateForNetworks(resData);
+        showResult(resData);
     }).fail(function (err) {
         console.log(JSON.stringify(err));
     });
