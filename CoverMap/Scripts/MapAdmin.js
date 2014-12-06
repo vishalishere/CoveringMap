@@ -46,7 +46,7 @@ var signalToText = function (signal) {
         case 2: return "Lidt signal";
         case 3: return "Middel signal";
         case 4: return "Meget signal";
-        case 5: return "Godt signal";
+        case 5: return "Fuldt signal";
     }
 };
 
@@ -67,7 +67,8 @@ var showResult = function (res) {
     for (var i in res) {
         var tmp = '<li><a href="javascript:sletPoint('+res[i].CoverID+');">Slet</a> ' + res[i].NetworkName + ': '
                     + res[i].Technology + ': '
-                    + signalToText(res[i].SignalStrength) + '</li>';
+                    + signalToText(res[i].SignalStrength) 
+                    + ' Oprettet: '+res[i].Created +'</li>';
         $('#dataresult').append(tmp);
     }
     $('#popup').modal('show');
