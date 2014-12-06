@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Forside";
+}
+
+<div class="jumbotron">
+    <p class="lead">Tryk på knappen og hjælp med at lave det realistiske dækningskort</p>
+    <p>
+        Teleselskaberne har dækningskort der er beregnet, og derfor ikke giver et retvisende billede. Dette kort er bruger
+        drevet og derfor viser det mere præcist.
+    </p>
+    <p>
+        For at hjælpe trykker du bare på knappen og giver dit netværksnavn og hvor god dækning du syntes du har.
+        Husk at dit selskab bruger et af de store selskabers netværk.
+    </p>
+    <p>
+        <a type="button" class="btn btn-primary" href="#popup" data-toggle="modal">Rapporter data</a>
+    </p>
+    <p>
+        @Html.ActionLink("Kortet", "Map")
+    </p>
+    <p>
+        Find koden her: <a href="https://github.com/davsebamse/CoveringMap">på Github</a>
+    </p>
+</div>
+
+<div id="popup" class="modal fade" style="display:none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Tilføj aflæsning</h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="networkname" class="col-sm-3 control-label">Netværk</label>
+                        <select id="networkname" class="btn btn-default">
+                            <option>Vælg netværk</option>
+                            <option value="TDC">TDC</option>
+                            <option value="Telenor">Telenor</option>
+                            <option value="Telia">Telia</option>
+                            <option value="3">3</option>
+                        </select>
+                        <!-- Help popup -->
+                    </div>
+                    <div class="form-group">
+                        <label for="techonology" class="col-sm-3 control-label">Teknologi</label>
+                        <select id="techonology" class="btn btn-default">
+                            <option value="Tale">Tale</option>
+                            <option value="3G">3G</option>
+                            <option value="4G">4G</option>
+                        </select>
+                        <!-- Help popup -->
+                    </div>
+                    <div class="form-group">
+                        <label for="signal" class="col-sm-3 control-label">Signalstyrke</label>
+                        <select id="signal" class="btn btn-default">
+                            <option>Vælg signal kvalitet</option>
+                            <option value="1">Intet signal</option>
+                            <option value="2">Lidt signal</option>
+                            <option value="3">Middel signal</option>
+                            <option value="4">Meget signal</option>
+                            <option value="5">Fuldt signal</option>
+                        </select>
+                        <!-- Help popup -->
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal">Luk</a>
+                <a href="#" id="senddata" class="btn btn-primary">Send data</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="uploadsuccess" class="alert alert-success" style="display:none;">
+    <a class="close" data-dismiss="alert">×</a>
+    <strong>Succes!</strong> Du har bidraget til at gøre kortet endnu bedre.
+</div>
+
+<div id="uploaderror"  class="alert alert-error" style="display:none;">
+    <a class="close" data-dismiss="alert">×</a>
+    <strong>Fejl!</strong> Der skete desværre en fejl.
+</div>
+
+<script src="~/Scripts/CoverPage.js"></script>

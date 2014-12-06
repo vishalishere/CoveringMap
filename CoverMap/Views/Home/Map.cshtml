@@ -1,0 +1,34 @@
+﻿@model IEnumerable<CoverMap.Models.Cover>
+
+@{
+    ViewBag.Title = "Kortet";
+}
+
+
+<p>
+    Når du klikker på en nål kigger den på en firkan der er 2km*2km med centrum i det punkt du har trykket på.
+</p>
+
+<div id="map"></div>
+
+<div id="popup" class="modal fade" style="display:none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Data resultat</h3>
+            </div>
+            <div class="modal-body">
+                <ul id="dataresult">
+
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" data-dismiss="modal">Luk</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/leaflet.js"></script>
+<script src="~/Scripts/Map.js"></script>
